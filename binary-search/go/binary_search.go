@@ -21,7 +21,7 @@ func binarySearch(array []int, target int) (int, int) {
 			return mid, counter
 		} else if guess > target {
 			high = mid - 1
-		} else if guess < target {
+		} else { // guess < target
 			low = mid + 1
 		}
 	}
