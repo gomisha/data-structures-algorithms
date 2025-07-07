@@ -13,8 +13,8 @@ def binary_search(arr, target):
             high = mid - 1
         else: # guess < target
             low = mid + 1
-
-    return None
+    # Return None if not found, along with the counter
+    return None, counter
 
 
 target = 20

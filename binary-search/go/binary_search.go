@@ -25,5 +25,6 @@ func binarySearch(array []int, target int) (int, int) {
 			low = mid + 1
 		}
 	}
+	// Return -1 if not found, along with the counter
 	return -1, counter
 }

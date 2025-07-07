@@ -17,6 +17,7 @@ function binarySearch(arr: number[], target: number): [number | null, number] {
         }
     }
 
+    // Return null if not found, along with the counter
     return [null, counter]
 }
 
