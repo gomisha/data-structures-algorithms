@@ -1,6 +1,7 @@
 import time
 import random
 
+
 # -------------- BINARY SEARCH IMPLEMENTATION --------------
 def binary_search(arr, target):
     low = 0
@@ -15,7 +16,7 @@ def binary_search(arr, target):
             return mid, counter
         elif guess > target:
             high = mid - 1
-        else: # guess < target
+        else:  # guess < target
             low = mid + 1
     # Return None if not found, along with the counter
     return None, counter
@@ -30,10 +31,10 @@ print("target: ", target, "counter: ", counter, "result: ", result)
 
 # -------------- BENCHMARK SETUP --------------
 ARRAY_SIZE = 10_000_000
-NUM_SEARCHES = 1_000_000
+NUM_SEARCHES = 100_000
 
 print("Array size: ", ARRAY_SIZE)
-print("Number of searchs: ", NUM_SEARCHES)
+print("Number of searches: ", NUM_SEARCHES)
 print("Generating sorted array...")
 
 array = list(range(0, ARRAY_SIZE))
@@ -50,7 +51,8 @@ for _ in range(NUM_SEARCHES // 2):
     search_keys_not_found.append(value)
 
 # combine both sets of targets (found and not found)
-search_keys = search_keys_found + search_keys_not_found
+# search_keys = search_keys_found + search_keys_not_found
+search_keys = search_keys_found
 
 # shuffle to mix found and not found targets
 random.shuffle(search_keys)
@@ -61,7 +63,7 @@ def benchmark_search():
     for key in search_keys:
         result, counter = binary_search(array,  key)
     end = time.perf_counter()
-    return (end - start)
+    return end - start
 
 # -------------- RUN BENCHMARK --------------
 
