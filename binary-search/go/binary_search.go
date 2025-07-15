@@ -3,31 +3,28 @@ package main
 import "fmt"
 
 func main() {
-	// write binary search algorithm
-	target := 3
-	result, counter := binarySearch([]int{1, 2, 3, 4, 5}, target)
+	target := 20
+	result, counter := binarySearch([]int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}, target)
 
 	fmt.Println("target: ", target, " counter: ", counter, " result: ", result)
 }
 
 func binarySearch(array []int, target int) (int, int) {
-	left := 0
-	right := len(array) - 1
-	counter := 1
-	for left <= right {
-		mid := left + (right-left)/2
-		if array[mid] == target {
+	low := 0
+	high := len(array) - 1
+	counter := 0
+	for low <= high {
+		counter++
+		mid := (low + high) / 2
+		guess := array[mid]
+		if guess == target {
 			return mid, counter
-		}
-		if array[mid] < target {
-			left = mid + 1
-			counter++
-			continue
-		}
-		if array[mid] > target {
-			counter++
-			right = mid - 1
+		} else if guess > target {
+			high = mid - 1
+		} else { // guess < target
+			low = mid + 1
 		}
 	}
+	// Return -1 if not found, along with the counter
 	return -1, counter
 }
